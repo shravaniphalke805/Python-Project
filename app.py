@@ -16,10 +16,13 @@ st.set_page_config(
 # Load Model
 # ---------------------------
 
-model = joblib.load("loan_approval_model.pkl")
-scaler = joblib.load("scaler.pkl")
-columns = joblib.load("columns.pkl")
-
+try:
+    model = joblib.load("loan_approval_model.pkl")
+    scaler = joblib.load("scaler.pkl")
+    columns = joblib.load("columns.pkl")
+except Exception as e:
+    st.error(f"Error loading files: {e}")
+    st.stop()
 # ---------------------------
 # Custom CSS
 # ---------------------------
